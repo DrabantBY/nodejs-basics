@@ -1,6 +1,5 @@
-# Node.js basics
+# [Node.js basics](https://github.com/AlreadyBored/nodejs-assignments/blob/main/assignments/nodejs-basics/assignment.md)
 
-1. [Task Link](https://github.com/AlreadyBored/nodejs-assignments/blob/main/assignments/nodejs-basics/assignment.md)
-2. Done:
-3. Score: 206/206
-   > node.js version 23.1.0
+- [x] Done:
+- [x] Score: 206/206
+> node.js version 23.1.0
