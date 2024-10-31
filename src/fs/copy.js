@@ -10,7 +10,7 @@ const copy = async () => {
 			errorOnExist: true,
 			force: false,
 		});
-	} catch (e) {
+	} catch {
 		throw new Error("FS operation failed");
 	}
 };
