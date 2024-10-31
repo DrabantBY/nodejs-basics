@@ -1,9 +1,9 @@
+import { join } from 'node:path';
 import { rm } from 'node:fs/promises';
-import getFilePath from '../utils/getFilePath.js';
 
 const remove = async () => {
 	try {
-		const file = getFilePath(import.meta.url, 'files/fileToRemove.txt');
+		const file = join(import.meta.dirname, 'files/fileToRemove.txt');
 
 		await rm(file);
 	} catch {

@@ -1,9 +1,9 @@
+import { join } from 'node:path';
 import { readFile } from 'node:fs/promises';
-import getFilePath from '../utils/getFilePath.js';
 
 const read = async () => {
 	try {
-		const targetFile = getFilePath(import.meta.url, 'files/fileToRead.txt');
+		const targetFile = join(import.meta.dirname, 'files/fileToRead.txt');
 
 		const text = await readFile(targetFile, { encoding: 'utf8' });
 

@@ -1,9 +1,9 @@
+import { join } from 'node:path';
 import { readdir } from 'node:fs/promises';
-import getFilePath from '../utils/getFilePath.js';
 
 const list = async () => {
 	try {
-		const folder = getFilePath(import.meta.url, 'files');
+		const folder = join(import.meta.dirname, 'files');
 
 		const files = await readdir(folder);
 
