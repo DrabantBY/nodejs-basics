@@ -13,5 +13,3 @@ const calculateHash = async () => {
 };
 
 await calculateHash();
-
-//!  do not work!
