@@ -3,7 +3,7 @@ import { writeFile } from 'node:fs/promises';
 
 const create = async () => {
 	try {
-		const targetFile = join(import.meta.dirname, 'files/fresh.txt');
+		const targetFile = join(import.meta.dirname, 'files', 'fresh.txt');
 
 		await writeFile(targetFile, 'I am fresh and young', { flag: 'wx' });
 	} catch {

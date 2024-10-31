@@ -3,7 +3,7 @@ import { rm } from 'node:fs/promises';
 
 const remove = async () => {
 	try {
-		const file = join(import.meta.dirname, 'files/fileToRemove.txt');
+		const file = join(import.meta.dirname, 'files', 'fileToRemove.txt');
 
 		await rm(file);
 	} catch {
