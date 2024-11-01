@@ -1,14 +1,26 @@
 import { join } from 'node:path';
-import { rename as renameFile } from 'node:fs/promises';
+import { rename as renameFile, access } from 'node:fs/promises';
 
 const rename = async () => {
 	try {
-		const oldFile = join(import.meta.dirname, 'files', 'wrongFilename.txt');
 		const newFile = join(import.meta.dirname, 'files', 'properFilename.md');
 
-		await renameFile(oldFile, newFile);
-	} catch {
+		await access(newFile);
+
 		throw new Error('FS operation failed');
+	} catch (err) {
+		if (err.code === 'ENOENT') {
+			try {
+				const newFile = join(import.meta.dirname, 'files', 'properFilename.md');
+				const oldFile = join(import.meta.dirname, 'files', 'wrongFilename.txt');
+
+				await renameFile(oldFile, newFile);
+			} catch {
+				throw new Error('FS operation failed');
+			}
+		} else {
+			throw err;
+		}
 	}
 };
 
