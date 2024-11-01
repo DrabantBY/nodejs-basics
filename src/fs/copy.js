@@ -1,18 +1,28 @@
 import { join } from 'node:path';
-import { cp } from 'node:fs/promises';
+import { cp, access } from 'node:fs/promises';
 
 const copy = async () => {
 	try {
-		const srcFolder = join(import.meta.dirname, 'files');
 		const newFolder = join(import.meta.dirname, 'files_copy');
 
-		await cp(srcFolder, newFolder, {
-			recursive: true,
-			errorOnExist: true,
-			force: false,
-		});
-	} catch {
+		await access(newFolder);
+
 		throw new Error('FS operation failed');
+	} catch (err) {
+		if (err.code === 'ENOENT') {
+			try {
+				const srcFolder = join(import.meta.dirname, 'files');
+				const newFolder = join(import.meta.dirname, 'files_copy');
+
+				await cp(srcFolder, newFolder, {
+					recursive: true,
+				});
+			} catch {
+				throw new Error('FS operation failed');
+			}
+		} else {
+			throw err;
+		}
 	}
 };
 
