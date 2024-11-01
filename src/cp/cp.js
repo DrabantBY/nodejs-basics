@@ -6,4 +6,4 @@ const spawnChildProcess = async (...args) => {
 	fork(file, args);
 };
 
-spawnChildProcess('someArg1', 'someArg2', 'someArg3');
+spawnChildProcess('Rolling', 'Scope', 'School');
