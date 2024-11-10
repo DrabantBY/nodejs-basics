@@ -9,7 +9,9 @@ const calculateHash = async () => {
 
 	const hash = createHash('sha256');
 
-	input.pipe(hash).setEncoding('hex').pipe(process.stdout);
+	// input.pipe(hash).setEncoding('hex').pipe(process.stdout);
+
+	input.pipe(hash).on('finish', () => console.log(hash.digest('hex')));
 };
 
 await calculateHash();
